@@ -1,0 +1,61 @@
+"Enter number one:Enter number two:"
+
+inc 20		#veränderung
+
+#enter number one:
+lit 0
+lit 17
+lit 18
+out 2
+
+#read value 1
+la 0 32
+la 0 36
+in 0
+
+#enter number two:
+lit 17
+lit 17
+lit 18
+out 2
+
+#read value 2
+la 0 40
+la 0 44
+in 0
+
+# new variable
+la 0 48
+lit 0
+sto
+
+#equal?
+lv 0 32
+lv 0 40
+rel 2
+fjmp .notEqual
+
+la 0 48
+lv 0 32
+lv 0 40
+add    # number1 + number2 = erg
+lit 2
+mul   # erg * 2
+sto
+jmp .end   #veränderung
+
+.notEqual
+la 0 48
+lv 0 32
+lv 0 40
+add       #  number1 + number2 = erg
+sto
+jmp .end	#veränderung
+
+
+.end		#veränderung
+lv 0 48
+lit 1
+out 0
+out 3
+halt
